@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "@changeme/backend#build": {
+      "dependsOn": ["^@changeme/utils#build", "^@changeme/types#build"]
+    },
+    "@changeme/backend#dev": {
+      "dependsOn": ["^@changeme/utils#build", "^@changeme/types#build"]
+    },
+    "@changeme/types#build": {},
+    "@changeme/gql#build": {},
+    "@changeme/native#dev": {
+      "dependsOn": [
+        "^@changeme/types#build",
+        "^@changeme/gql#build",
+        "^@changeme/utils#build"
+      ]
+    },
+    "@changeme/utils#build": {},
+    "lint": {},
+    "lint:eslint": {},
+    "lint:fix": {},
+    "test": {},
+    "clean": {
+      "cache": false
+    }
+  }
+}

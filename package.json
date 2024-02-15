@@ -1,0 +1,47 @@
+{
+  "name": "@sbarli/innovation",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "build:backend": "turbo run @changeme/backend#build",
+    "clean": "turbo clean && rm -rf node_modules",
+    "dev": "turbo run dev",
+    "dev:backend": "turbo run @changeme/backend#dev",
+    "dev:native": "turbo run @changeme/native#dev",
+    "exp": "yarn workspace @changeme/native exp",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "lint:eslint": "turbo run lint:eslint",
+    "lint:fix": "turbo run lint:fix",
+    "lint:staged": "lint-staged",
+    "postinstall": "npx patch-package",
+    "test": "turbo run test",
+    "codegen": "graphql-codegen --config codegen.yml && turbo run @changeme/gql#build"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,jsx}": [
+      "eslint --quiet --fix"
+    ]
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
+    "@parcel/watcher": "^2.3.0",
+    "eslint-config-custom": "*",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": "18.18.2"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.19"
+}
