@@ -1,4 +1,4 @@
-# Template Repo
+# Samantha Barli's Template Repo
 
 - Turborepo (monorepo)
 - Apps
